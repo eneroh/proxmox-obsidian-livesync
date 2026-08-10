@@ -127,15 +127,25 @@ docker compose -f compose.yaml --env-file .env up -d
 12. Create Database, then input name "Obsidian", stick with "non-partitioned"
 **You can skip this step, obsidian will do it for you** 
 13. Visit Configuration, then input the following:
+<br>
 Section      Name                 Value
+<br>
 chttpd       require_valid_user   true
+<br>
 chttpd_auth  require_valid_user   true
+<br>
 httpd        WWW-Authenticate     Basic realm="couchdb"
+<br>
 httpd        enable_cors          true
+<br>
 chttpd       enable_cors          true
+<br>
 chttpd       max_http_request_size 4294967296 
+<br>
 couchdb      max_document_size     50000000
+<br>
 cors         credentials           true
+<br>
 cors         origins               app://obsidian.md, capacitor://localhost, http://localhost
 
 ### Domain set-up
