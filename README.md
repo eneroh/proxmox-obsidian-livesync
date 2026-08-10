@@ -5,6 +5,11 @@
 2. Cloudflare account (free)
 3.  
 
+### Container specifications
+**CPU:** 1
+**RAM:** 512MB
+**Storage:** 50GB
+
 ## Procedure
 ### Proxmox environment setup
 1. Within proxmox, create an lxc container
