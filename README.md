@@ -6,27 +6,38 @@
 3.  
 
 ## Procedure
-Proxmox environment setup
+### Proxmox environment setup
 1. Within proxmox, create an lxc container
+<br>
 In GUI, 'Create CT'
+<br>
 Set password
+<br>
 Under templates, select 'ubuntu-2404'
+<br>
 Disk size, '50GB'
+<br>
 CPU, 1 core [Default]
+<br>
 Memory, 512MB [Default]
+<br>
 Network, set:
+<br>
 Static IP: 10.0.0.252/24
+<br>
 Default Gateway: 10.0.0.1
+<br>
 Select option: "Start after created"
+<br>
 *NOTE* Ensure you have a containerised instance of Ubuntu 24.04 available, testing has not been performed on a 26.04 ubuntu instance
 
-Containerised couchdb instance
+### Containerised couchdb instance
 2. Update repositories and install updates
 ```bash
 apt update && apt upgrade -y
 ```
 
-Docker installation
+### Docker installation
 3. Install Docker
 ```bash
 apt install -y ca-certificates curl gnupg
@@ -49,7 +60,7 @@ apt update
 ```bash
 apt install -y docker-ce docker-ce-cli containerd.io dockerbuildx-compose-plugin
 ```
-Docker configuration
+### Docker configuration
 4. 
 ```bash
 echo "services:
@@ -83,10 +94,11 @@ COUCHDB_USER: admin
 COUCHDB_PASSWORD: <password>
 ```
 press shift+:
+<br>
 type wq for write and quit
 :wq
 
-Couchdb installation
+### Couchdb installation
 6. Start your docker compose file
 **Option 1:** Make the script included in this repo executable then run the script
 ```bash
@@ -99,7 +111,7 @@ chmod +x
 docker compose -f compose.yaml --env-file .env up -d
 ```
 
-Couchdb configuration
+### Couchdb configuration
 7. In a web browser, visit the following location: <ip for container>:5984/_utils
 8. Visit "Setup"
 9. Set "Configure a single node"
@@ -114,22 +126,24 @@ chttpd_auth  require_valid_user   true
 httpd        WWW-Authenticate     Basic realm="couchdb"
 httpd        enable_cors          true
 chttpd       enable_cors          true
-chttpd       max_http_request_size 4294967296
+chttpd       max_http_request_size 4294967296 
 couchdb      max_document_size     50000000
 cors         credentials           true
 cors         origins               app://obsidian.md, capacitor://localhost, http://localhost
 
-Domain set-up
+### Domain set-up
 
-Domain configuration
+### Domain configuration
 
-Cloudflare tunnel setup
+### Cloudflare tunnel setup
 In a web browser, access your cloudflare dashboard and set up a cloudflare tunnel
+<br>
 Input your chosen subdomain and domain, your path if necessary.
+<br>
 *IMPORTANT* Your service url must be the following: http://couchdb:5984
 
-Community plugin Livesync setup
+### Community plugin Livesync setup
 
-Community plugin Livesync configuration
+### Community plugin Livesync configuration
 
-Setting up community plugin livesync on mobile devices
+### Setting up community plugin livesync on mobile devices
