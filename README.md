@@ -3,9 +3,10 @@
 ## Items required for procedure
 1. Domain purchase (costs $15-$20)
 2. Cloudflare account (free)
-3.  
+3. ubuntu container proxmox template
+4. Docker package
 
-### Container specifications
+## Container specifications
 **CPU:** 1
 <br>
 **RAM:** 512MB
